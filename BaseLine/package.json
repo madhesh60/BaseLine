@@ -1,0 +1,96 @@
+{
+  "name": "baseline-compatibility-checker",
+  "displayName": "Baseline Browser Compatibility Checker",
+  "description": "Check HTML, CSS, and JavaScript features against MDN Baseline compatibility standards",
+  "version": "1.0.0",
+  "publisher": "your-publisher-name",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "baseline",
+    "compatibility",
+    "mdn",
+    "browser",
+    "css",
+    "html",
+    "javascript",
+    "web standards"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:css",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "baseline-checker.checkFile",
+        "title": "Baseline: Check Current File",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "baseline-checker.showStatus",
+        "title": "Baseline: Show Quick Reference"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "baseline-checker.checkFile",
+          "when": "resourceLangId =~ /(html|css|javascript|javascriptreact|typescript|typescriptreact)/",
+          "group": "baseline"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "baseline-checker.checkFile",
+          "when": "editorLangId =~ /(html|css|javascript|javascriptreact|typescript|typescriptreact)/"
+        },
+        {
+          "command": "baseline-checker.showStatus"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Baseline Compatibility Checker",
+      "properties": {
+        "baselineChecker.enableAutoCheck": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically check files as you type"
+        },
+        "baselineChecker.showWarnings": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show warnings for non-baseline features"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/node": "16.x",
+    "eslint": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/baseline-checker"
+  },
+  "license": "MIT"
+}
