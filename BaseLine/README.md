@@ -27,6 +27,7 @@ The **Baseline Browser Compatibility Checker** is a Visual Studio Code extension
    - **Command Palette**: Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) and type `Baseline`.
    - **Context Menu**: Right-click in the editor and select `Baseline: Check Current File`.
 4. Hover over features in your code to see detailed compatibility information.
+
 5.Use npm install to install dependencies
 
 
